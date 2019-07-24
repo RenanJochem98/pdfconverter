@@ -15,6 +15,9 @@ class PdfHandler(object):
     def closePdf(self):
         self.pdfObj.close()
 
+    def getNumberOfPages(self):
+        return self.pdf.getNumPages();
+
     def getPdfMetadata(self):
         metadata = {}
 
@@ -29,7 +32,8 @@ class PdfHandler(object):
 
     def getText(self):
         text = ""
-        for pageNumber in range(1, self.number_of_pages):
-            text = text + " " + self.pdf.getPage(pageNumber).extractText()
+        text = self.pdf.getPage(4).extractText()
+        # for pageNumber in range(1, self.number_of_pages):
+        #     text = text + " " + self.pdf.getPage(pageNumber).extractText()
 
         return text
